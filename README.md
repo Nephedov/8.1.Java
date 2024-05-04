@@ -2,47 +2,61 @@
 
 ## Решения
 ### Задание 1
-  * <a href="https://github.com/Nephedov/8.1.Java/blob/029b7ab5d8999b773a6751af1c8c831f198971ed/pom.xml">pom.xml</a> - c подключенным JaCoCo, с генерацией отчетов и проверкой 100% покрытия строк.
-  * <a href="https://github.com/Nephedov/8.1.Java/blob/029b7ab5d8999b773a6751af1c8c831f198971ed/.github/workflows/maven.yml">maven.yml</a> - CI на основе GitHub Actions.
-  * <a href="https://github.com/Nephedov/8.1.Java/blob/029b7ab5d8999b773a6751af1c8c831f198971ed/src/test/java/ru/netology/statistic/StatisticsServiceTest.java">StatisticsServiceTest.java</a> - тестовый класс с добавленным тестом для 100% покрытия.
+* <a href="https://github.com/Nephedov/8.1.Java/blob/main/pom.xml">pom.xml</a> - c JaCoCo, генерацией отчетов и проверкой 100% покрытия строк.
+* <a href="https://github.com/Nephedov/8.1.Java/blob/main/.github/workflows/maven.yml">maven.yml</a> - Github CI с verify-сборкой.
+* <a href="https://github.com/Nephedov/8.1.Java/blob/main/src/test/java/ru/netology/statistic/StatisticsServiceTest.java">StatisticsServiceTest.java</a> - автотесты.
+
+<a href="https://github.com/Nephedov/8.1.Java/tree/main">Репозиторий</a> с проектом JaCoCo.
 ### Задание 2
-  * <a href="https://github.com/Nephedov/8.2.Java/blob/2c3d3f0e3a7b92351d4ffaed2cd179771fd3c6d0/pom.xml">pom.xml</a> - с подключенными JaCoCo, SpotBugs и Maven Plugin.
-  * <a href="https://github.com/Nephedov/8.3.Java/blob/a9b5bddfceabf2e3ccf64ce14c4cc17e32d825a6/pom.xml">pom.xml</a> - с подключенным JaCoCo и Maven Checkstyle Plugin.
-  * <a href=""></a>
+* <a href="https://github.com/Nephedov/8.2.Java/blob/main/pom.xml">pom.xml</a> - с подключенными JaCoCo, SpotBugs и SpotBugs Maven Plugin.
+
+<a href="https://github.com/Nephedov/8.2.Java/tree/main">Репозиторий</a> с проектом JaCoCo + SpotBugs + SpotBugs Maven Plugin.
+
+### Задание 3
+* <a href="https://github.com/Nephedov/8.3.Java/blob/a9b5bddfceabf2e3ccf64ce14c4cc17e32d825a6/pom.xml">pom.xml</a> - с подключенным JaCoCo и Maven Checkstyle Plugin.
+
+<a href="https://github.com/Nephedov/8.3.Java/tree/main">Репозиторий</a> с проектом JaCoCo + Maven Checkstyle Plugin.
 
 ## Что было сделано
-  * Настроен Maven проект.
-  * Настроен Github CI с verify-сборкой Maven и JaCoCo.
-  * Отформатирован код.
-  * Расширен тестовый класс для 100% покрытия строк.
-  * Подключены плагины SpotBugs и Maven Plugin для него.
+### Задание1
+* Создан Maven проект и настроен <a href="https://github.com/Nephedov/8.1.Java/blob/main/pom.xml">pom.xml</a> с плагинами и зависимостями:
+  * JunitJupiter.
+  * Maven Surefire Plugin.
+  * JaCoCo.
+* Настроен <a href="https://github.com/Nephedov/8.1.Java/blob/main/.github/workflows/maven.yml">maven.yml</a> для Github CI с verify-сборкой.
+* Дописаны автотесты в классе <a href="https://github.com/Nephedov/8.1.Java/blob/main/src/test/java/ru/netology/statistic/StatisticsServiceTest.java">StatisticsServiceTest.java</a>
+
+### Задание 2
+* Создан Maven проект и настроен <a href="https://github.com/Nephedov/8.2.Java/blob/main/pom.xml">pom.xml</a> с плагинами и зависимостями:
+  * JunitJupiter.
+  * Maven Surefire Plugin.
+  * JaCoCo.
+  * SpotBugs.
+  * SpotBugs Maven Plugin.
+* Настроен <a href="https://github.com/Nephedov/8.2.Java/blob/main/.github/workflows/maven.yml">maven.yml</a> для Github CI с verify-сборкой.
+
+### Задание 3
+* Создан Maven проект и настроен <a href="https://github.com/Nephedov/8.3.Java/blob/main/pom.xml">pom.xml</a> с плагинами и зависимостями:
+  * JunitJupiter.
+  * Maven Surefire Plugin.
+  * JaCoCo.
+  * Maven Checkstyle Plugin.
+* Настроен <a href="https://github.com/Nephedov/8.3.Java/blob/main/.github/workflows/maven.yml">maven.yml</a> для Github CI с verify-сборкой.
+
 
 # Задание 1. Синдром 100% (обязательное к выполнению)
 
 Вы попали в команду максималистов, которые хотят, чтобы те автотесты, которые вы пишете, покрывали код на 100%.
 
-Но вот незадача:
-* непонятно, что такое 100%;
-* непонятно, как это сделать.
-
-Вспоминаем: покрытием кода у нас занимается JaCoCo, но он просто сигнализирует о том, что конкретно пошло не так.
-
-Большинство подобных плагинов, помимо целей отчётности (`report`), содержат ещё цель `check`, которая обрушает сборку, если не выполнены определённые проверки.
-
 Что вам нужно
 1. Создать Мавен-проект с тестируемым кодом из листинга кода, он указан ниже по условию.
-1. Изучить [документацию на плагин](https://www.eclemma.org/jacoco/trunk/doc/maven.html), а конкретно — на цель `check`.
-1. Внедрить эту цель во фазу `verify`. Обратите внимание, что эта цель и так публикуется в эту фазу.
-1. Настроить правила по покрытию на 100%. При этом нужно изучить разницу между счётчиками `INSTRUCTION`, `LINE`, `BRANCH`, `COMPLEXITY`.
-1. Вникнуть в тестируемый код.
+1. Внедрить эту цель во фазу `verify`.
 1. Выбрать один из счётчиков и добиться 100% покрытия через добавление новых тестов.
 
 **Важно**: использовать можно только один из следующих: 
 1. `INSTRUCTION`
 1. `LINE`
 1. `BRANCH`
-
-Обратите внимание на чеклист в начале условия, он содержит подсказки по внедрению JaCoCo в ваш Мавен-проект.
 
 Тестируемый код, его как-либо редактировать **нельзя**:
 ```java
